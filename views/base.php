@@ -6,35 +6,47 @@
     <title>ShortSh - URL Shortener</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/css/bootstrap-5.3.8-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="bg-light">
     <div class="container-fluid p-0 d-flex min-vh-100">
         
         <main class="flex-grow-1 d-flex flex-column">
-            <header class="bg-white border-bottom p-3 shadow-sm d-flex justify-content-between align-items-center">
-                <h1 class="h3 mb-0">
-                    <a href="/" class="text-decoration-none text-dark">URL Shortener</a>
-                </h1>
-
-                <div class="d-flex align-items-center gap-3">
-                    
-                    <div class="dropdown">
-                        <button class="btn btn-light dropdown-toggle fw-bold text-secondary border" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
-                            <?= $_SESSION['username'] ?? 'Guest'; ?>
+            <header>
+                <nav class="navbar navbar-expand-lg bg-white border-bottom shadow-sm">
+                    <div class="container-fluid px-4">
+                        <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+                            <span class="fw-bold">¯\_(ツ)_/¯</span>
+                            <span class="fw-semibold">ShortSh</span>
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
                         </button>
                         
-                        <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="userMenu">
-                            <li><a class="dropdown-item" href="/">Home</a></li>
-                            <li><a class="dropdown-item" href="/login">Login</a></li>
-                            <li><a class="dropdown-item" href="/register">Register</a></li>
-                            <?php if (isset($_SESSION['username'])): ?>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item text-danger" href="/logout">Log out</a></li>
-                            <?php endif; ?>
-                        </ul>
+                        <div class="collapse navbar-collapse" id="navbarContent">
+                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-end">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="/">Home</a>
+                                </li>
+                            </ul>
+                            
+                            <div class="d-flex align-items-center justify-content-end gap-3 mt-2 mt-lg-0 ms-lg-3">
+                                <?php if (!isset($_SESSION['username'])): ?>
+                                    <a href="/login" class="btn btn-outline-primary btn-sm rounded-pill px-3">Login</a>
+                                    <a href="/register" class="btn btn-primary btn-sm rounded-pill px-3">Register</a>
+                                <?php else: ?>
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-secondary btn-sm dropdown-toggle rounded-pill px-3" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <?= htmlspecialchars($_SESSION['username']); ?>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" aria-labelledby="userMenu">
+                                            <li><a class="dropdown-item text-danger" href="/logout">Log out</a></li>
+                                        </ul>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
                     </div>
-                    </div>
+                </nav>
             </header>
             
             <div class="container my-4">
