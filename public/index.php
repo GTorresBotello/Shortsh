@@ -7,6 +7,7 @@ require_once __DIR__ . '/../models/User.php';
 require_once __DIR__ . '/../controllers/HomeController.php';
 require_once __DIR__ . '/../controllers/AuthController.php';
 require_once __DIR__ . '/../controllers/UrlController.php';
+require_once __DIR__ . '/../controllers/RedirectController.php';
 
 // Simple routing
 $method = $_SERVER['REQUEST_METHOD'];
@@ -38,11 +39,13 @@ switch ($route) {
         $controller = new UrlController();
         $controller->add($method);
         break;
+    case '/logout':     
+        $_SESSION['username'] = null;
+        $_SESSION['user_id'] = null;
+        header('location: /');
+        break;
     default:
-        // Handle 404 or other routes
-        // var_dump(strpos($route, 'u'));
-        // print_r($route);
-        // header("HTTP/1.0 404 Not Found");
-        echo "404 Not Found";
+        $controller = new RedirectController();
+        $controller->redirection($route);
         break;
 }

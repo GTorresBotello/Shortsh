@@ -12,7 +12,6 @@ class UrlController {
             include __DIR__ . '/../views/base.php';
             
          }elseif ($method === 'POST'){
-             
              $pdo = Database::getInstance();
              $original = $_POST['original'];
              $short = $_POST['short'];

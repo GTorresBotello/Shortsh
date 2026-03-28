@@ -18,10 +18,17 @@ class AuthController {
             $password = $_POST['password'];
             $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
             $stmt->execute([$username]);
-            
             $query = $stmt->fetch(PDO::FETCH_ASSOC);
-            var_dump($query);
-            var_dump(password_verify($password, $query['password']));
+            if (password_verify($password, $query['password'] ?? '')){
+                $_SESSION['username'] = $query['username'];
+                $_SESSION['user_id'] = $query['id'];
+                header('location: /');
+                exit;
+            } else{
+                $_SESSION['error_msg'] = 'Invalid credentials';
+                header('location: /login');
+                exit;
+            }
         }
     }
     
@@ -30,25 +37,28 @@ class AuthController {
         $pdo = Database::getInstance();
         if ($method === 'GET') {
             ob_start();
-            include __DIR__ . '/../views/login.php';
+            include __DIR__ . '/../views/register.php';
             $content = ob_get_clean();
             include __DIR__ . '/../views/base.php';
             
         } elseif ($method === 'POST') {
             $username = $_POST['username'];
             $password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $stmt = $pdo->prepare("INSERT INTO users (username, password, user_type) VALUES (?, ?, 'user')");
-            try {
+            
+            try{
+                $stmt = $pdo->prepare("INSERT INTO users (username, password, user_type) VALUES (?, ?, 'user')");
                 $stmt->execute([$username, $password_hash]);
-            } catch (Throwable $e){
-                var_dump($e->getCode());
-                echo(PHP_EOL);
-                var_dump($e->getMessage());
-                echo(PHP_EOL);
-                
+                $_SESSION['username'] = $username;
+                $_SESSION['user_id'] = $pdo->lastInsertId();
+                header("location: /");
+                exit;
+            }catch (PDOException $e){
+                if ($e->getCode() == 23000) {
+                    $_SESSION['error_msg'] = 'This user already exist';
+                    header("location: /register");
+                    exit;
+                }
             }
-            var_dump($_POST);
-            var_dump(password_hash($_POST['password'], PASSWORD_DEFAULT));
         }
     }
 }

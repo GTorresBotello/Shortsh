@@ -24,7 +24,7 @@ class Database {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             username TEXT UNIQUE NOT NULL,
             password TEXT NOT NULL,
-            user_type TEXT CHECK(user_type IN ('guest', 'user', 'admin')) DEFAULT 'guest'
+            user_type TEXT CHECK(user_type IN ('user', 'admin')) DEFAULT 'user'
         )");
 
         $this->pdo->exec("CREATE TABLE IF NOT EXISTS urls (
