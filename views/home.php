@@ -20,7 +20,7 @@
                     <?php foreach ($urls as $url): ?>
                         <tr>
                             <td><a href="<?php echo htmlspecialchars($url['original_url']); ?>" class="text-truncate d-inline-block" style="max-width: 400px;"><?php echo htmlspecialchars($url['original_url']); ?></a></td>
-                            <td><span class="badge bg-secondary"><?php echo htmlspecialchars($url['short_url']); ?></span></td>
+                            <td><span class="badge bg-secondary"><?php echo htmlspecialchars('https://shortsh.lat/' . $url['short_url']); ?></span></td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>

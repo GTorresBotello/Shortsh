@@ -15,6 +15,8 @@ class UrlController {
              $pdo = Database::getInstance();
              $original = $_POST['original'];
              $short = $_POST['short'];
+             $short = str_replace(' ', '_', $short);
+             $short = rawurlencode($short);
              
              $stmt = $pdo->prepare("INSERT INTO urls (original_url, short_url, user_id) VALUES (?, ?, ?)");
              $stmt->execute([$original, $short, $_SESSION['user_id'] ?? null]);

@@ -3,6 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ShortSh is a fast, simple, and abstract URL shortener built with PHP. Create and manage your shortened links efficiently.">
+    <meta name="keywords" content="url shortener, short links, shortsh, php url shortener, link management">
+    <meta name="author" content="ShortSh">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shortsh.test/">
+    <meta property="og:title" content="ShortSh - URL Shortener">
+    <meta property="og:description" content="ShortSh is a fast, simple, and abstract URL shortener built with PHP. Create and manage your shortened links efficiently.">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://shortsh.test/">
+    <meta property="twitter:title" content="ShortSh - URL Shortener">
+    <meta property="twitter:description" content="ShortSh is a fast, simple, and abstract URL shortener built with PHP. Create and manage your shortened links efficiently.">
+    
     <title>ShortSh - URL Shortener</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/css/bootstrap-5.3.8-dist/css/bootstrap.min.css">
@@ -15,8 +32,8 @@
                 <nav class="navbar navbar-expand-lg bg-white border-bottom shadow-sm">
                     <div class="container-fluid px-4">
                         <a class="navbar-brand d-flex align-items-center gap-2" href="/">
-                            <span class="fw-bold">¯\_(ツ)_/¯</span>
-                            <span class="fw-semibold">ShortSh</span>
+                          <span class="fw-bold">¯\_(ツ)_/¯</span>
+                          <h1 class="fw-semibold mb-0">ShortSh</h1>
                         </a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
