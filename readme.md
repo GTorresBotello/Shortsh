@@ -1,4 +1,4 @@
-¯\_(ツ)_/¯ ShortSh
+# ¯\_(ツ)_/¯ ShortSh
 ShortSh is a lightweight, minimalist URL shortener built with PHP. It allows users to transform long, cumbersome links into tidy, custom-slugged URLs. Whether you are a guest or a registered user, ShortSh provides an easy way to manage and share your digital footprint.
 🚀 Features
  * Custom Slugs: Create meaningful short links instead of random strings by defining your own slugs.
