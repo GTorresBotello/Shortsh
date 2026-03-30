@@ -1,2 +1,2 @@
 *.xml
-./database/*
+database/
