@@ -14,12 +14,14 @@ ShortSh is a lightweight, minimalist URL shortener built with PHP. It allows use
  * Frontend: Bootstrap 5.3.8 and Vanilla JavaScript.
  * Routing: Custom .htaccess based front-controller pattern.
 📁 Project Structure
+'''
 The project follows a clean separation of concerns:
 ├── controllers/      # Logic for Auth, URLs, and Redirections
 ├── models/           # Database interaction and Schema initialization
 ├── views/            # PHP templates and UI components
 ├── public/           # Web entry point (index.php) and assets
 └── .github/          # Workflow configurations
+'''
 
 ⚙️ Installation & Setup
 Prerequisites
