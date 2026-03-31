@@ -6,6 +6,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: php
     steps:
       - name: Execute Deployment Commands on Remote Server
         uses: appleboy/ssh-action@v1.0.3
