@@ -15,6 +15,6 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            pwd
+            cd prod; pwd
             # cd /var/www/html/shortsh
             # git pull origin main
